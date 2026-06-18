@@ -8,18 +8,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "lucide-react": "^0.294.0",
+    "mssql": "^10.0.1",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "mssql": "^10.0.1",
-    "tedious": "^16.0.0",
     "recharts": "^2.8.0",
-    "lucide-react": "^0.294.0"
+    "tedious": "^16.0.0",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
     "typescript": "^5"
   }
 }
