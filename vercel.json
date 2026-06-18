@@ -1,23 +1,6 @@
-<<<<<<< HEAD
-﻿{
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "framework": "nextjs",
-  "outputDirectory": ".next"
-=======
 {
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "outputDirectory": ".next",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
->>>>>>> b80c8db02942770817515265480a0f95c9d0b6b6
+  "outputDirectory": ".next"
 }
