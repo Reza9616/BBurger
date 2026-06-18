@@ -3,6 +3,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '../../../../lib/db';
 import { getCurrentUser, unauthorizedResponse } from '../../../../lib/auth';
 
+type ProductRecord = {
+  name: string;
+  count: number;
+  revenue: number;
+};
+
+type CategoryItem = {
+  name: string;
+  count: number;
+  revenue: number;
+  percentage: number;
+};
+
 export async function GET(request: NextRequest) {
   const user = await getCurrentUser(request);
   if (!user) {
@@ -28,8 +41,8 @@ export async function GET(request: NextRequest) {
       END
     `);
     
-    // محاسبه کل درآمد برای درصد
-    const totalRevenue = productsResult.recordset.reduce((sum, item) => sum + (item.revenue || 0), 0);
+    // محاسبه کل درآمد برای درصد - اصلاح شده با TypeScript
+    const totalRevenue = productsResult.recordset.reduce((sum: number, item: ProductRecord) => sum + (item.revenue || 0), 0);
     
     // نام‌های فارسی دسته‌بندی
     const categoryNames: Record<string, string> = {
@@ -40,7 +53,7 @@ export async function GET(request: NextRequest) {
       'متفرقه': 'متفرقه'
     };
     
-    const categories = productsResult.recordset.map(item => ({
+    const categories: CategoryItem[] = productsResult.recordset.map((item: ProductRecord) => ({
       name: categoryNames[item.name] || item.name,
       count: item.count,
       revenue: item.revenue || 0,
